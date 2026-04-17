@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prométhée Studio — Experimental Showcase</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- GRAIN -->
+  <canvas class="grain-canvas" id="grain-canvas"></canvas>
+
+  <!-- ── CHAPTER NAV (discreet side dots) ────────────────── -->
+  <nav class="ch-nav" id="ch-nav" aria-label="Chapters">
+    <a class="ch-dot" href="#hero"     data-label="00 · Intention">  <span></span></a>
+    <a class="ch-dot" href="#story"    data-label="01 · Movement">   <span></span></a>
+    <a class="ch-dot" href="#showcase" data-label="02 · Space">      <span></span></a>
+    <a class="ch-dot" href="#kinetic"  data-label="03 · Rhythm">     <span></span></a>
+    <a class="ch-dot" href="#timeline" data-label="04 · Sequence">   <span></span></a>
+    <a class="ch-dot" href="#finale"   data-label="05 · Conclusion"> <span></span></a>
+  </nav>
+
+  <!-- ── LOADER ─────────────────────────────────────────── -->
+  <div class="loader" id="loader">
+    <img class="loader-logo" src="/assets/logo.png" alt="Prométhée Studio" />
+    <div class="loader-bar">
+      <div class="loader-fill" id="loader-fill"></div>
+    </div>
+    <div class="loader-label" id="loader-label">000</div>
+    <div class="loader-brand">PROMÉTHÉE</div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       00 — INTENTION
+  ════════════════════════════════════════════════════ -->
+  <section id="hero" class="section section--hero" data-chapter="0">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="hero-content">
+      <img class="hero-logo" src="/assets/logo.png" alt="Prométhée Studio" />
+
+      <div class="hero-eyebrow">
+        <span class="eyebrow-rule"></span>
+        <span class="eyebrow-text">Experimental Showcase</span>
+        <span class="eyebrow-rule"></span>
+      </div>
+
+      <h1 class="hero-title" aria-label="Prométhée Studio">
+        <span class="title-row row-1">
+          <span class="tw">PRO</span><span class="tw fire">MÉ</span><span class="tw">THÉE</span>
+        </span>
+        <span class="title-row row-2">
+          <span class="tw">STU</span><span class="tw fire">DIO</span>
+        </span>
+      </h1>
+
+      <p class="hero-sub"><em>This is a demonstration of what's possible.</em></p>
+
+      <div class="hero-actions">
+        <!-- Replaced commercial CTA with scroll invitation -->
+        <button class="btn-mag" id="btn-hero" data-mag>
+          <span class="btn-label">Begin the sequence</span>
+          <span class="btn-fill"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="hint-line"></div>
+    </div>
+
+    <!-- Chapter label -->
+    <div class="ch-label ch-label--hero">
+      <span class="chl-num">00</span>
+      <span class="chl-title">Intention</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       01 — MOVEMENT  (scroll story — unchanged structure)
+  ════════════════════════════════════════════════════ -->
+  <section id="story" class="section section--story" data-chapter="1">
+    <div class="story-outer" id="story-outer">
+      <div class="story-track" id="story-track">
+
+        <div class="story-panel sp-1">
+          <div class="sp-bg"></div>
+          <div class="sp-content">
+            <span class="sp-num">I /</span>
+            <h2 class="sp-title">
+              <span class="sp-word">Motion</span>
+              <span class="sp-word">as</span>
+              <span class="sp-word fire">language.</span>
+            </h2>
+            <p class="sp-body">Every frame carries meaning. Movement is the medium.</p>
+          </div>
+          <div class="sp-deco deco-circle"></div>
+          <div class="ch-label">
+            <span class="chl-num">01</span>
+            <span class="chl-title">Movement</span>
+          </div>
+        </div>
+
+        <div class="story-panel sp-2">
+          <div class="sp-bg"></div>
+          <div class="sp-content">
+            <span class="sp-num">II /</span>
+            <h2 class="sp-title">
+              <span class="sp-word">Time</span>
+              <span class="sp-word">is</span>
+              <span class="sp-word fire">material.</span>
+            </h2>
+            <p class="sp-body">Duration, delay, easing. The grammar of motion.</p>
+          </div>
+          <div class="sp-deco deco-lines"></div>
+        </div>
+
+        <div class="story-panel sp-3">
+          <div class="sp-bg"></div>
+          <div class="sp-content">
+            <span class="sp-num">III /</span>
+            <h2 class="sp-title">
+              <span class="sp-word">Scroll</span>
+              <span class="sp-word">as</span>
+              <span class="sp-word fire">narrative.</span>
+            </h2>
+            <p class="sp-body">The viewport becomes a stage. You are the director.</p>
+          </div>
+          <div class="sp-deco deco-ring"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       02 — SPACE  (3D showcase — stats replaced)
+  ════════════════════════════════════════════════════ -->
+  <section id="showcase" class="section section--showcase" data-chapter="2">
+    <canvas id="showcase-canvas"></canvas>
+
+    <div class="showcase-left">
+      <span class="sc-tag">WebGL · GLSL · Real-time</span>
+      <h2 class="sc-title">
+        <span class="sc-line">Space</span>
+        <span class="sc-line sc-italic">without</span>
+        <span class="sc-line">limits.</span>
+      </h2>
+      <span class="sc-hint">← Move your cursor</span>
+    </div>
+
+    <!-- Stats replaced with conceptual note -->
+    <div class="showcase-note">
+      <p class="sc-note-line">Custom GLSL shaders.</p>
+      <p class="sc-note-line">Vertex displacement.</p>
+      <p class="sc-note-line">Mouse-reactive camera.</p>
+    </div>
+
+    <div class="ch-label ch-label--br">
+      <span class="chl-num">02</span>
+      <span class="chl-title">Space</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       03 — RHYTHM  (kinetic type — unchanged)
+  ════════════════════════════════════════════════════ -->
+  <section id="kinetic" class="section section--kinetic" data-chapter="3">
+
+    <div class="mq-wrap">
+      <div class="mq-track" id="mq1">
+        <div class="mq-inner">
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+        </div>
+        <div class="mq-inner" aria-hidden="true">
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+          <span>MOTION</span><em>·</em><span>SPACE</span><em>·</em><span>TIME</span><em>·</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="kinetic-stage">
+      <h2 class="k-headline" id="k-headline">
+        Form follows<br />
+        <span class="k-distort" id="k-distort">motion.</span>
+      </h2>
+      <p class="k-sub">Typography as force. Letters as objects in space.</p>
+    </div>
+
+    <div class="mq-wrap mq-rev">
+      <div class="mq-track" id="mq2">
+        <div class="mq-inner">
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+        </div>
+        <div class="mq-inner" aria-hidden="true">
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+          <span>RHYTHM</span><em>·</em><span>LANGUAGE</span><em>·</em><span>FORM</span><em>·</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="ch-label ch-label--kinetic">
+      <span class="chl-num">03</span>
+      <span class="chl-title">Rhythm</span>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       04 — SEQUENCE  (timeline — reframed as explorations)
+  ════════════════════════════════════════════════════ -->
+  <section id="timeline" class="section section--timeline" data-chapter="4">
+    <div class="tl-header">
+      <div class="tl-tag">Explorations</div>
+      <h2 class="tl-title"><span class="tl-title-inner">The Archive.</span></h2>
+    </div>
+
+    <div class="tl-grid">
+
+      <article class="tl-item" data-index="0">
+        <div class="tl-yr">2024</div>
+        <div class="tl-card">
+          <div class="tl-card-num">E·01</div>
+          <h3 class="tl-card-title">Signal & Identity</h3>
+          <p class="tl-card-desc">Motion as brand language. How a system moves is what it says.</p>
+          <div class="tl-glow"></div>
+        </div>
+      </article>
+
+      <article class="tl-item" data-index="1">
+        <div class="tl-yr">2024</div>
+        <div class="tl-card">
+          <div class="tl-card-num">E·02</div>
+          <h3 class="tl-card-title">Spatial Web</h3>
+          <p class="tl-card-desc">Immersive interface. Real-time 3D rendered inside the browser.</p>
+          <div class="tl-glow"></div>
+        </div>
+      </article>
+
+      <article class="tl-item" data-index="2">
+        <div class="tl-yr">2024</div>
+        <div class="tl-card">
+          <div class="tl-card-num">E·03</div>
+          <h3 class="tl-card-title">Interaction Grammar</h3>
+          <p class="tl-card-desc">A vocabulary of 200+ micro-interactions. Rules for living UI.</p>
+          <div class="tl-glow"></div>
+        </div>
+      </article>
+
+      <article class="tl-item" data-index="3">
+        <div class="tl-yr">2023</div>
+        <div class="tl-card">
+          <div class="tl-card-num">E·04</div>
+          <h3 class="tl-card-title">Sonic Space</h3>
+          <p class="tl-card-desc">Audio-reactive installation. Sound and image as a single surface.</p>
+          <div class="tl-glow"></div>
+        </div>
+      </article>
+
+      <article class="tl-item" data-index="4">
+        <div class="tl-yr">2022</div>
+        <div class="tl-card">
+          <div class="tl-card-num">E·05</div>
+          <h3 class="tl-card-title">Kinetic Portrait</h3>
+          <p class="tl-card-desc">A moving image of a studio. What moves reveals what matters.</p>
+          <div class="tl-glow"></div>
+        </div>
+      </article>
+
+      <article class="tl-item" data-index="5">
+        <div class="tl-yr">2022</div>
+        <div class="tl-card">
+          <div class="tl-card-num">E·06</div>
+          <h3 class="tl-card-title">Augmented Surface</h3>
+          <p class="tl-card-desc">AR as medium. Digital objects exist in physical space.</p>
+          <div class="tl-glow"></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="ch-label ch-label--tl">
+      <span class="chl-num">04</span>
+      <span class="chl-title">Sequence</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════
+       05 — CONCLUSION
+  ════════════════════════════════════════════════════ -->
+  <section id="finale" class="section section--finale" data-chapter="5">
+    <div class="finale-wipe" id="finale-wipe"></div>
+    <canvas id="finale-canvas"></canvas>
+
+    <div class="finale-body">
+      <!-- Replaced "Ready to ignite?" / "Let's build fire." -->
+      <p class="fin-pre">End of sequence.</p>
+      <h2 class="fin-title">
+        <span class="fin-w">What</span>
+        <span class="fin-w fin-fire">moves</span>
+        <span class="fin-w">endures.</span>
+      </h2>
+
+      <!-- Replaced commercial "Start a project" button with declaration -->
+      <p class="fin-declaration">
+        This is an experimental showcase.<br />
+        <em>A demonstration of what's possible.</em>
+      </p>
+    </div>
+
+    <img class="finale-logo" src="/assets/logo.png" alt="" aria-hidden="true" />
+
+    <div class="ch-label ch-label--finale">
+      <span class="chl-num">05</span>
+      <span class="chl-title">Conclusion</span>
+    </div>
+
+    <footer class="fin-footer">
+      <span>Prométhée Studio — Experimental</span>
+      <span>Motion · Space · Interaction</span>
+    </footer>
+  </section>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
