@@ -31,6 +31,8 @@ import {
   initFinaleDeclaration,
 } from './animations/scroll.js';
 
+import { initI18n } from './i18n.js';
+
 // ──────────────────────────────────────────────────────────
 //  Register GSAP plugins
 // ──────────────────────────────────────────────────────────
@@ -71,6 +73,7 @@ function bootstrap() {
   initFinaleScroll();
   initFinaleDeclaration();
   initChapterNav();
+  initI18n();
 
   // ── Magnetic buttons ──
   initMagnetic();

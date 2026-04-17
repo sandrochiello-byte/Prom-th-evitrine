@@ -181,7 +181,7 @@ export function initKineticType() {
 }
 
 // ──────────────────────────────────────────────────────────
-//  SECTION 5 — TIMELINE
+//  SECTION 5 — TIMELINE (now archive list)
 // ──────────────────────────────────────────────────────────
 export function initTimelineScroll() {
   // Title reveal
@@ -196,34 +196,53 @@ export function initTimelineScroll() {
     },
   });
 
-  // Card stagger
-  const items = gsap.utils.toArray('.tl-item');
-  items.forEach((item, i) => {
-    gsap.to(item, {
-      opacity: 1,
-      y: 0,
-      duration: 0.85,
-      ease: 'power3.out',
-      delay: (i % 3) * 0.08,
-      scrollTrigger: {
-        trigger: item,
-        start:   'top 88%',
-        toggleActions: 'play none none reverse',
-      },
-    });
+  // Archive rows stagger in
+  const rows = gsap.utils.toArray('.archive-row');
+  rows.forEach((row, i) => {
+    gsap.fromTo(row,
+      { opacity: 0, y: 22 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: row,
+          start:   'top 90%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
   });
 
-  // Hover glow animation
-  items.forEach((item) => {
-    const card = item.querySelector('.tl-card');
-    const glow = item.querySelector('.tl-glow');
-    if (!card || !glow) return;
+  // Row line expand on scroll (decorative)
+  rows.forEach((row) => {
+    const line = row.querySelector('.ar-line');
+    if (!line) return;
+    gsap.fromTo(line,
+      { scaleX: 0 },
+      {
+        scaleX: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: row,
+          start:   'top 90%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+  });
 
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width)  * 100;
-      const y = ((e.clientY - rect.top)  / rect.height) * 100;
-      glow.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(232,73,30,0.12), transparent 55%)`;
+  // Hover: title slides right
+  rows.forEach((row) => {
+    const title = row.querySelector('.ar-title');
+    if (!title) return;
+    row.addEventListener('mouseenter', () => {
+      gsap.to(title, { x: 8, color: 'var(--ember)', duration: 0.3, ease: 'power2.out' });
+    });
+    row.addEventListener('mouseleave', () => {
+      gsap.to(title, { x: 0, color: 'var(--text)', duration: 0.4, ease: 'power2.out' });
     });
   });
 }

@@ -429,3 +429,141 @@ button { background: none; border: none; font: inherit; color: inherit; cursor: 
   .ch-label--tl,
   .ch-label--finale { right: 5%; left: auto; }
 }
+
+/* ============================================================
+   ARCHIVE LIST  — replaces card grid
+   ============================================================ */
+
+/* Remove old card grid styles from layout (kept in CSS for
+   safety but .tl-grid is no longer in HTML) */
+.tl-grid { display: none; }
+
+.archive-list {
+  margin-top: 0;
+}
+
+.archive-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 4rem;
+  align-items: start;
+  gap: 1.2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: default;
+  transition: border-color 0.3s;
+  position: relative;
+}
+.archive-row:first-child { border-top: 1px solid var(--border); }
+.archive-row:hover { border-bottom-color: var(--border-h); }
+
+.ar-num {
+  font-family: var(--ff-disp);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--ember);
+  padding-top: 0.15rem;
+  user-select: none;
+}
+
+.ar-body { padding-right: 2rem; }
+
+.ar-title {
+  font-family: var(--ff-disp);
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+.ar-desc {
+  font-size: clamp(0.7rem, 1vw, 0.82rem);
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.ar-year {
+  font-family: var(--ff-disp);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 0.18rem;
+}
+
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+.lang-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  background: rgba(7, 13, 28, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--ff-disp);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text);
+  cursor: none;
+  transition: border-color 0.3s, background 0.3s;
+  opacity: 0;
+  animation: ltFadeIn 0.6s ease 2.2s forwards;
+}
+@keyframes ltFadeIn { to { opacity: 1; } }
+.lang-toggle:hover { border-color: var(--border-h); }
+
+.lt-active  { color: var(--ember); }
+.lt-inactive { color: var(--muted); }
+.lt-sep      { color: var(--muted); opacity: 0.4; }
+
+/* ============================================================
+   BTN-MAG INNER FIX
+   The <button> is the click target and never moves.
+   Only .btn-inner moves (magnetic content).
+   ============================================================ */
+.btn-mag {
+  /* Override: remove direct transform from old code */
+  padding: 0;
+  border: none;
+  background: none;
+}
+.btn-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.8rem;
+  border: 1px solid rgba(59,130,246,0.22);
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transition: color 0.4s var(--ease-out);
+}
+.btn-inner .btn-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--fire);
+  transform: translateY(101%);
+  transition: transform 0.45s var(--ease-out);
+  z-index: 0;
+}
+.btn-inner:hover .btn-fill { transform: translateY(0); }
+.btn-label { position: relative; z-index: 1; }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .lang-toggle { right: 0.8rem; top: 1.2rem; }
+  .archive-row { grid-template-columns: 4rem 1fr 3.5rem; }
+  .ar-body { padding-right: 0; }
+}
